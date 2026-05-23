@@ -88,7 +88,14 @@ class CalculatorViewModel {
         case .add: result = oldValue + currentValue
         case .subtract: result = oldValue - currentValue
         case .multiply: result = oldValue * currentValue
-        case .divide: result = oldValue / currentValue
+        case .divide:
+                    if currentValue == 0 {
+                        displayText = "Ошибка"
+                        isUserTyping = false
+                        currentOperation = nil
+                        return
+                    }
+                    result = oldValue / currentValue
         }
         
         formatAndDisplay(result)
