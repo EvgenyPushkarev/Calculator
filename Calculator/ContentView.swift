@@ -88,9 +88,23 @@ struct ContentView: View {
                 .foregroundColor(.white)
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
                 .frame(height: 90) // Фиксированная высота для сохранения геометрии
-                .background(Color.gray)
+                .background(getButtonColor(for: label))
         }
     }
+    //  Метод определения цвета кнопок
+        private func getButtonColor(for label: String) -> Color {
+            switch label {
+            case "C":
+                // Чуть более светлый серый для кнопки сброса
+                return Color(red: 0.15, green: 0.15, blue: 0.15)
+            case "/", "x", "—", "+", "=":
+                //  Сине-стальной цвет для операторов
+                return Color(red: 0.14, green: 0.27, blue: 0.44)
+            default:
+                // Глубокий темно-серый для цифр и запятой
+                return Color(red: 0.08, green: 0.08, blue: 0.08)
+            }
+        }
 }
 
 #Preview {
